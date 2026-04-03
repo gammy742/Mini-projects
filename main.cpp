@@ -2,6 +2,7 @@
 #include<string>
 #include<algorithm>
 #include<cctype>
+#include <limits>
 
 enum CHOICES{
 	jobapply=1,exits=2
@@ -38,14 +39,17 @@ class Jobapply{
 		std::string getGender(){return gender;}
 
 		virtual void setGender(std::string gender){
-			if(gender !="male" ||gender !="female" ||gender !="lgbtq+" ||gender !="lgbtq"){
+			if(gender !="male" &&gender !="female" &&gender !="lgbtq+" &&gender !="lgbtq"){
 				this->gender ="Unknown";
+			}else{
+				this->gender = gender;
 			}
-			this->gender = gender;
 		}
 
 		virtual std::string getPosition(){return position;}
-		virtual void setPosition(std::string position){this->position = position;}
+		virtual void setPosition(std::string position){
+			this->position = position;
+		}
 		
 
 		double getGpa(){return gpa;}
@@ -73,7 +77,7 @@ class Jobapply{
 			std::cout<<"Apply Position "<< position<< '\n';
 			std::cout << "-----------Description-------------\n";
 
-			if(age==-1 || gpa ==-1 || gender =="Unknown"){
+			if(age==0 || gpa ==0 || gender =="Unknown"){
 				std::cout<<"Your application is rejected\n";
 				return;
 			}
@@ -89,7 +93,7 @@ class Jobapply{
 class GraphicDesignerApply:public Jobapply{
 	public:
 		GraphicDesignerApply(){}
-		GraphicDesignerApply(std::string n,std::string g,int age,double gpa,std::string position):Jobapply(n,g,age,gpa,position){}
+		GraphicDesignerApply(std::string n,std::string g,int age,double gpa,std::string p):Jobapply(n,g,age,gpa,p){}
 		void setPosition(std::string position) override{
 			Jobapply::setPosition("Graphic  Designer");
 		}
@@ -98,7 +102,7 @@ class GraphicDesignerApply:public Jobapply{
 class MarketingApply:public Jobapply{
 	public:
 		MarketingApply(){}
-		MarketingApply(std::string n,std::string g,int age,double gpa,std::string position):Jobapply(n,g,age,gpa,position){}
+		MarketingApply(std::string n,std::string g,int age,double gpa):Jobapply(n,g,age,gpa){}
 		void setGpa(double gpa) override{
 			if(gpa<2.5 || gpa>4){
 				Jobapply::setGpa(0);
@@ -114,18 +118,29 @@ class MarketingApply:public Jobapply{
 class HumanResourceApply:public Jobapply{
 	public:
 		HumanResourceApply(){}
-		HumanResourceApply(std::string n,std::string g,int age,double gpa,std::string position):Jobapply(n,g,age,gpa,position){}
+		HumanResourceApply(std::string n,std::string g,int age,double gpa)
+			:Jobapply(n,g,age,gpa){}
+
 		void setGender(std::string gender) override{
-			if(gender !="female" ||gender !="lgbtq+" ||gender !="lgbtq"){
-				Jobapply::setGender("Human resource");
+			if(gender !="female" && gender !="lgbtq+" &&gender !="lgbtq"){
+				Jobapply::setGender("Unknown");
 			}else{
 				Jobapply::setGender(gender);
 			}
 		}
 		void setPosition(std::string position) override{
-			Jobapply::setPosition("Human resource");
+			Jobapply::setPosition("Human Resource");
 		}
 
+};
+
+class AccountingApply:public Jobapply{
+	public:
+		AccountingApply(){}
+		AccountingApply(std::string n,std::string g,int age,double gpa):Jobapply(n,g,age,gpa){}
+		void setPosition(std::string position) override{
+			Jobapply::setPosition("Accounting");	
+		}	
 };
 
 int main(){
@@ -135,24 +150,22 @@ int main(){
 	int choices;
 	int positionChoices;
 
-
-	CHOICES choose = static_cast<CHOICES>(choices);
-	POSITION positionChoose =static_cast<POSITION>(positionChoices);
-
 	Jobapply job;
 	GraphicDesignerApply graphicApply;
 	MarketingApply mkt;
 	HumanResourceApply hr;
+	AccountingApply acc;
 
 
 	
 	do {
 		printMenu();
 		std::cin >> choices;
+		CHOICES choose = static_cast<CHOICES>(choices);
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	
-		switch (choices) {
+		switch (choose) {
 			case jobapply: {
 				printJobPositioin();
 	
@@ -162,10 +175,11 @@ int main(){
 				do {
 					std::cout << "Enter the one you want to apply\n";
 					std::cin >> positionChoices;
+					POSITION positionChoose =static_cast<POSITION>(positionChoices);
 					std::cin.clear();
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	
-					switch (positionChoices) {
+					switch (positionChoose) {
 						case graphicDesigner:
 							applicant = &graphicApply;
 							break;
@@ -174,6 +188,9 @@ int main(){
 							break;
 						case humanResorce:
 							applicant = &hr;
+							break;
+						case accounting:
+							applicant = &acc;
 							break;
 						case none:
 							break;
@@ -189,10 +206,11 @@ int main(){
 						applicant->setGender(gender);
 						applicant->setAge(age);
 						applicant->setGpa(gpa);
+						applicant->setPosition(applicant->getPosition());
 						applicant->displayDetails();
 					}
 				} while (positionChoices != none);
-	
+				
 				break;
 			}
 	
