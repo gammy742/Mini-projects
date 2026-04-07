@@ -1,0 +1,20 @@
+#executables
+a.out
+*.exe
+*.out
+*.o
+
+#macOS debug files
+.dSYM/
+.dSYM/
+
+#build files
+output/
+build/
+bin/
+
+#vscode
+.vscode/
+
+#macOS
+.DS_Store
