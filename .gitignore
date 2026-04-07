@@ -3,6 +3,8 @@ a.out
 *.exe
 *.out
 *.o
+g
+grade
 
 #macOS debug files
 .dSYM/
@@ -18,3 +20,7 @@ bin/
 
 #macOS
 .DS_Store
+
+# Temporary files
+*.log
+*.tmp
