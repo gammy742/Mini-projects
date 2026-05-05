@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # --- Project Specific Binaries ---
 g
 grade
@@ -7,3 +8,18 @@ grade
 
 #Other Folder
 .sixth
+=======
+file
+
+# วิดีโอต้นฉบับ
+*.mov
+*.MOV
+
+# วิดีโอที่แปลงเสร็จแล้ว
+*.mp4
+*.MP4
+
+# (ทางเลือก) บล็อกไฟล์วิดีโอประเภทอื่นๆ เผื่อไว้
+*.avi
+*.mkv
+>>>>>>> 175a26c5625a6adb48d547e28fc98365b106410e
