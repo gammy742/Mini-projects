@@ -1,26 +1,9 @@
-#executables
-a.out
-*.exe
-*.out
-*.o
+# --- Project Specific Binaries ---
 g
 grade
 
-#macOS debug files
-.dSYM/
-.dSYM/
+# --- IDE/Editor ---
+.vscode
 
-#build files
-output/
-build/
-bin/
-
-#vscode
-.vscode/
-
-#macOS
-.DS_Store
-
-# Temporary files
-*.log
-*.tmp
+#Other Folder
+.sixth
