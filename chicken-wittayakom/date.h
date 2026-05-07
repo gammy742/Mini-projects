@@ -1,0 +1,48 @@
+#pragma once
+
+class Date{
+    private:
+        int day;
+        int month;
+        int year;
+    
+    public:
+        Date();
+        ~Date();
+        int getDay() const;
+        void setDay(const int &d);
+        int getMonth() const;
+        void setMonth(const int &m);
+        int getYear() const;
+        void setYear(const int &y);
+        void inputDate();
+        void displayDate();
+
+};
+
+//day
+inline int Date::getDay() const{
+    return day;
+}
+
+inline void Date::setDay(const int &d){
+    day =d;
+}
+
+//Month
+inline int Date::getMonth() const{
+    return month;
+}
+
+inline void Date::setMonth(const int &m){
+    month=m;
+}
+
+//year
+inline int Date::getYear() const{
+    return year;
+}
+
+inline void Date::setYear(const int &y){
+    year=y;
+}
