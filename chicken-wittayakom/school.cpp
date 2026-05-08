@@ -1,10 +1,13 @@
 #include "school.h"
+#include "student.h"
 #include<iostream>
+#include<vector>
 
 School::School(){
     className="Unknown";
     studentLimit=0;
     classAmount=0;
+    std::vector<Student> students;
 }
 
 School::~School(){
@@ -42,4 +45,26 @@ void School::setClassAmount(const int &cla){
         std::cerr<<"Invalid class limit(1-14)\n";
     }
 };
+
+void School::inputEnrolled(){
+    std::string tempName;
+    int tempAge;
+
+    std::cout<<"*****************************\n\n";
+    std::cout<<"Enter Your Information\n";
+    std::cout<<"*****************************\n\n";
+
+    std::cout<<"Enter your name\n";
+    std::cin.ignore();
+    std::getline(std::cin,tempName);
+};
+
+
+void School::printEnrolled(){
+    std::cout<<"*****************************\n\n";
+    std::cout<<"Welcome to Chicken-Wittayakom\n";
+    std::cout<<"*****************************\n\n";
+
+    std::cout<<"Enter your name\n";
     
+}
