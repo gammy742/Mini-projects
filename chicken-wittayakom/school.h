@@ -5,6 +5,7 @@
 #include"requirement.h"
 #include<cctype>
 #include <algorithm>
+#include <limits>
 
 class School{
     private:
