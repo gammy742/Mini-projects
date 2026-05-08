@@ -3,6 +3,8 @@
 #include<vector>
 #include "student.h"
 #include"requirement.h"
+#include<cctype>
+#include <algorithm>
 
 class School{
     private:
@@ -10,6 +12,8 @@ class School{
         int studentLimit;
         int classAmount;
         std::vector<Student> students;
+
+        Student s;
     public:
         School();
         ~School();

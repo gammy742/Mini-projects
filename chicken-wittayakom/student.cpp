@@ -1,6 +1,6 @@
 #include"student.h"
 #include<iostream>
-#include<cctype>
+
 
 Student::Student(){
     name="Unknown";

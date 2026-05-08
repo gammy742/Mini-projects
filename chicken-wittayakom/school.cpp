@@ -1,10 +1,13 @@
 #include "school.h"
 #include<iostream>
 
+
 School::School(){
     className="Unknown";
     studentLimit=0;
     classAmount=0;
+
+    
 }
 
 School::~School(){
@@ -46,8 +49,8 @@ void School::setClassAmount(const int &cla){
 void School::inputEnrolled(){
     std::string tempName;
     int tempAge;
-
-    Student s;
+    std::string tempGender;
+    std::string tempAddress;
     
     std::cout<<"*****************************\n\n";
     std::cout<<"Enter Your Information\n";
@@ -56,14 +59,42 @@ void School::inputEnrolled(){
     std::cout<<"Enter your name\n";
     std::cin.ignore();
     std::getline(std::cin,tempName);
+    s.setName(tempName);
+
+    std::cout<<"Enter Your Age\n";
+    std::cin>>tempAge;
+    std::cin.clear();
+    s.setAge(tempAge);
+
+    std::cout<<"Enter your Gender\n";
+    std::cin.ignore();
+    std::cin>>tempGender;
+
+    std::for_each(
+        tempGender.begin(),
+        tempGender.end(),
+        [](char &ch){
+            ch=::tolower(ch);
+        }
+    );
+    s.setGender(tempGender);
+
+    std::cout<<"Enter your Address\n";
+    std::cin.ignore();
+    std::getline(std::cin,tempAddress);
+    s.setAddress(tempAddress);
 };
 
 
 void School::printEnrolled(){
-    std::cout<<"*****************************\n\n";
+    std::cout<<"*****************************\n";
     std::cout<<"Welcome to Chicken-Wittayakom\n";
-    std::cout<<"*****************************\n\n";
+    std::cout<<"*****************************\n";
 
-    std::cout<<"Enter your name\n";
+    std::cout<<"Thank you for Your Enrolled\n";
+    std::cout<<s.getName()<<'\n';
+    std::cout<<s.getAge()<<'\n';
+    std::cout<<s.getGender()<<'\n';
+    std::cout<<s.getAddress()<<'\n';
     
 }
