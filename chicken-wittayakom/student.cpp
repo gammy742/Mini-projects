@@ -26,7 +26,12 @@ int Student::getAge()const{
     return age;
 }
 void Student::setAge(const int &a){
-    this->age=a;
+    requirement.setAge(a);
+    if(requirement.getAge()==a){
+        this->age=a;
+    }else{
+        std::cerr<<"Invalid Age\n";
+    }
 }
 
 //Gender
@@ -34,7 +39,12 @@ std::string Student::getGender()const{
     return gender;
 }
 void Student::setGender(const std::string &g){
-    this->gender=g;
+    requirement.setGender(g);
+    if(requirement.getGender()==g){
+        this->gender=g;
+    }else{
+        std::cerr << "Invalid Gender\n";
+    }
 }
 
 //Address

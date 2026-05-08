@@ -9,6 +9,12 @@ Requirement::Requirement(){
 Requirement::~Requirement(){
     std::cout<<"Requirement object destroy\n";
 }
+int Requirement::getAge()const{
+    return age;
+}
+std::string Requirement::getGender() const{
+    return gender;
+}
 
 void Requirement::setGender(const std::string &g){
     if(g=="male"||g=="female"||g=="lgbtq"||g=="lgbtq+"){
@@ -22,7 +28,7 @@ void Requirement::setAge(const int &a){
     if(a>=0 && a<=18){
         this->age=a;
     }else{
-        std::cerr<<"Invalid gender\n";
+        std::cerr<<"Invalid age\n";
     }
 
 }

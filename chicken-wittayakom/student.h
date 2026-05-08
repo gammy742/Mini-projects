@@ -1,5 +1,6 @@
 #pragma once
 #include<string>
+#include"requirement.h"
 
 class Student{
     private:
@@ -7,6 +8,7 @@ class Student{
         int age;
         std::string gender;
         std::string address;
+        Requirement requirement;
     public:
         Student();
         ~Student();

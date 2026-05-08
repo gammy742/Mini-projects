@@ -2,6 +2,7 @@
 #include<string>
 #include<vector>
 #include "student.h"
+#include"requirement.h"
 
 class School{
     private:

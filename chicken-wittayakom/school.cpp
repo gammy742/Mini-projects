@@ -1,13 +1,10 @@
 #include "school.h"
-#include "student.h"
 #include<iostream>
-#include<vector>
 
 School::School(){
     className="Unknown";
     studentLimit=0;
     classAmount=0;
-    std::vector<Student> students;
 }
 
 School::~School(){
@@ -50,6 +47,8 @@ void School::inputEnrolled(){
     std::string tempName;
     int tempAge;
 
+    Student s;
+    
     std::cout<<"*****************************\n\n";
     std::cout<<"Enter Your Information\n";
     std::cout<<"*****************************\n\n";
